@@ -3,21 +3,25 @@
 namespace App;
 
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class Test extends Command
+class SayHello extends Command
 {
     protected function configure()
     {
         $this
-            ->setName('test')
-            ->setDescription('Do nothing');
+            ->setName('hello')
+            ->setDescription('Do nothing')
+            ->addArgument('string', InputArgument::REQUIRED);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('Do nothing');
+        $str = $input->getArgument('string');
+
+        $output->writeln('Привет, ' . $str);
         return Command::SUCCESS;
     }
 }
