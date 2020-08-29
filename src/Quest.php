@@ -26,11 +26,7 @@ class Quest extends Command
         $questions[] = new ChoiceQuestion('Выберите пол: ', ['м', 'ж'], 0);
 
         foreach ($questions as $key => $question) {
-            if (array_key_last($questions) === $key) {
-                $answers[] = $helper->ask($input, $output, $question);
-            } else {
-                $answers[] = $helper->ask($input, $output, $question);
-            }
+            $answers[] = $helper->ask($input, $output, $question);
         }
 
         $output->writeln('Привет, ' . $answers[0] . '! Ваш возраст: ' . $answers[1] . ', Ваш пол: ' . $answers[2]);
